@@ -1,43 +1,35 @@
 export default function handler(req, res) {
   const { key, hwid } = req.query;
 
-  // 👑 ADMIN KEYS (NO HWID LOCK)
-  const adminKeys = ["KASADMIN", "FRMODE"];
+  // ===== ADMIN KEY (BYPASS HWID) =====
+  if (key === "99999") {
+    return res.status(200).send("OK");
+  }
 
-  // 🔑 USER KEYS (HWID LOCKED)
-  let keys = {
+  // ===== NORMAL KEYS (HWID LOCKED) =====
+  const keys = {
     "12345": null,
-    "48291": null,
-    "70534": null,
-    "16389": null,
-    "94820": null
+    "54321": null,
+    "11111": null,
+    "22222": null,
+    "33333": null
   };
 
-  if (!key || !hwid) {
-    return res.json({ status: "no", msg: "Missing data" });
+  if (!keys[key]) {
+    return res.status(403).send("BAD_KEY");
   }
 
-  // ADMIN BYPASS
-  if (adminKeys.includes(key)) {
-    return res.json({ status: "ok", admin: true });
-  }
-
-  // INVALID KEY
-  if (!(key in keys)) {
-    return res.json({ status: "no", msg: "Invalid key" });
-  }
-
-  // FIRST USE → BIND
+  // first use → lock hwid
   if (keys[key] === null) {
     keys[key] = hwid;
-    return res.json({ status: "ok", bind: true });
+    return res.status(200).send("OK");
   }
 
-  // MATCH
-  if (keys[key] === hwid) {
-    return res.json({ status: "ok" });
+  // hwid check
+  if (keys[key] !== hwid) {
+    return res.status(403).send("HWID_MISMATCH");
   }
 
-  // HWID MISMATCH
-  return res.json({ status: "no", msg: "Nice try haha" });
+  return res.status(200).send("OK");
 }
+
