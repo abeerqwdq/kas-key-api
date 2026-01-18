@@ -1,7 +1,7 @@
 local HttpService = game:GetService("HttpService")
 
 -- 🔹 CONFIG: your key and kathub script URLs
-local KEY = "TEST123"  -- Firebase document ID
+local KEY = "TESTKEY123"  -- Firebase document ID
 local KATHUB_SCRIPTS = {
     "https://raw.githubusercontent.com/abeerqwdq/kathub/refs/heads/main/apv1",
     "https://raw.githubusercontent.com/abeerqwdq/kathub/refs/heads/main/autohit"
