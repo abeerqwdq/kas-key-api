@@ -18,5 +18,5 @@ if not data.ok then
     return
 end
 
--- ✅ LOAD HUB FROM kathub REPO
-loadstring(game:HttpGet("https://raw.githubusercontent.com/abeerqwdq/kathub/main/apv1.lua"))()
+-- ✅ LOAD YOUR KATHUB SCRIPT
+loadstring(game:HttpGet("https://raw.githubusercontent.com/abeerqwdq/kathub/refs/heads/main/apv1"))()
