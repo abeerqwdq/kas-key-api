@@ -1,0 +1,9 @@
+{
+  "name": "kas-key-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^10.5.0"
+  }
+}
