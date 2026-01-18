@@ -7,7 +7,7 @@ local key = getgenv().KEY or "NO_KEY"
 -- HWID
 local hwid = RbxAnalytics:GetClientId()
 
--- AUTH SERVER
+-- AUTH API
 local url = "https://kas-key-api.vercel.app/api/check?key="
     .. key .. "&hwid=" .. hwid
 
@@ -29,7 +29,7 @@ end
 
 warn("AUTH OK — LOADING HUB")
 
--- ✅ YOUR HUB SCRIPT (FROM kathub REPO)
+-- 🔥 LOAD HUB FROM kathub REPO
 local hubUrl = "https://raw.githubusercontent.com/abeerqwdq/kathub/refs/heads/main/apv1"
 
 local ok2, hubCode = pcall(function()
